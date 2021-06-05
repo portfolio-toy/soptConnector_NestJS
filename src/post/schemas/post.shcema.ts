@@ -2,6 +2,7 @@ import { Prop, raw, Schema, SchemaFactory } from '@nestjs/mongoose';
 import { Document } from 'mongoose';
 import * as mongoose from 'mongoose';
 import { User } from 'src/user/schemas/user.schema';
+import { CommentDto } from '../dto/comment.dto';
 
 export type PostDocument = Post & Document;
 
@@ -25,7 +26,7 @@ export class Post {
 		avatar: { type: String },
 		date: { type: Date, default : Date.now}
 	}))
-	details: Record<string, any>;
+	comments: [CommentDto];
 
 	@Prop({ default: Date.now })
 	date: Date;
